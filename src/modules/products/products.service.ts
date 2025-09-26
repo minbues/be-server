@@ -649,12 +649,16 @@ export class ProductsService {
   }
 
   async applyAllShopDiscount(event: DiscountEventEntity) {
-    await this.productsRepository.update(
-      {},
-      {
-        discount: event.discount,
-      },
-    );
+
+    const products = await this.productsRepository.find({ select: ['id'] });
+    const ids = products.map(p => p.id);
+    
+    if (ids.length > 0) {
+      await this.productsRepository.update(
+        { id: In(ids) }, // ✅ Criteria hợp lệ
+        { discount: event.discount },
+      );
+    }
     return { message: 'Đã áp dụng giảm giá toàn shop' };
   }
 
