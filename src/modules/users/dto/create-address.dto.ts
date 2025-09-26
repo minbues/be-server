@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 
 export class CreateAddressDto {
-  @ApiProperty({ example: 'Vu Thi Huong', type: String })
+  @ApiProperty({ example: 'Lê Thị Ngọc Ánh', type: String })
   @IsString()
   @IsNotEmpty()
   fullName: string;
