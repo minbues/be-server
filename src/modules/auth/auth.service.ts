@@ -110,26 +110,26 @@ export class AuthService {
       status: StatusEnum.ACTIVE,
     });
 
-    const verifyAccount = generateVerifyAccountInfo(
-      VerifyCodeEnum.CREATE_ACCOUNT,
-    );
+    // const verifyAccount = generateVerifyAccountInfo(
+    //   VerifyCodeEnum.CREATE_ACCOUNT,
+    // );
 
-    await this.userVerifyService.create({
-      userId: user.id,
-      code: verifyAccount.code,
-      codeExpires: verifyAccount.codeExpires,
-      type: VerifyCodeEnum.CREATE_ACCOUNT,
-    });
+    // await this.userVerifyService.create({
+    //   userId: user.id,
+    //   code: verifyAccount.code,
+    //   codeExpires: verifyAccount.codeExpires,
+    //   type: VerifyCodeEnum.CREATE_ACCOUNT,
+    // });
 
-    await this.mailService.verifyAccount({
-      to: dto.email,
-      data: {
-        name: user.fullName,
-        customer: user.id,
-        code: verifyAccount.code,
-        codeExpires: verifyAccount.codeExpires,
-      },
-    });
+    // await this.mailService.verifyAccount({
+    //   to: dto.email,
+    //   data: {
+    //     name: user.fullName,
+    //     customer: user.id,
+    //     code: verifyAccount.code,
+    //     codeExpires: verifyAccount.codeExpires,
+    //   },
+    // });
   }
 
   async verifyEmail(dto: AuthVerifyEmailDto) {
